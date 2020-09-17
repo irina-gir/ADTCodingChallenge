@@ -1,6 +1,7 @@
 package com.example.codingchallenge.api
 
 import com.example.codingchallenge.models.CharacterApiModel
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -25,5 +26,5 @@ object RetrofitService {
  */
 interface CharacterEndPoint{
     @GET("api/character/")
-    suspend fun getApiResponse(): CharacterApiModel
+    suspend fun getApiResponse(): Response<CharacterApiModel>
 }

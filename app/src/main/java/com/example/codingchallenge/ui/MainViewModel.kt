@@ -13,10 +13,7 @@ import kotlinx.coroutines.launch
  */
 open class MainViewModel(private val repository: CharacterRepository): ViewModel() {
 
-    val repoLiveData =  MutableLiveData<List<Character>> ()
-//            by lazy {
-//        MutableLiveData<List<Character>>()
-//    }
+    val repoLiveData =  MutableLiveData<List<Character>>()
 
     /**
      * calling CharacterRepository response within coroutine scope
@@ -27,7 +24,6 @@ open class MainViewModel(private val repository: CharacterRepository): ViewModel
             repoLiveData.postValue(list)
         }
     }
-
 }
 
 /**

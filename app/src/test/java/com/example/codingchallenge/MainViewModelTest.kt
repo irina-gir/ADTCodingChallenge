@@ -39,12 +39,12 @@ class MainViewModelTest {
     }
 
     @Test
-    fun testRepo(){
+    fun testRepoData(){
         runBlocking {
             Mockito.`when`(repo.getCharactersFromApi()).thenReturn(getDummyData())
             mainViewModel.getCharacters()
             val list = mainViewModel.repoLiveData.value
-            assert(list?.get(0)!!.created == "One")
+            assert(list!![0].created == "One")
             assert(list[1].gender == "One")
             assert(list[2].name == "One")
             assert(list[3].image == "Image")
