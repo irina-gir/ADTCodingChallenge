@@ -11,11 +11,12 @@ import kotlinx.coroutines.launch
 /**
  * View Model with liveData to be observed
  */
-class MainViewModel(private val repository: CharacterRepository): ViewModel() {
+open class MainViewModel(private val repository: CharacterRepository): ViewModel() {
 
-    val repoLiveData: MutableLiveData<List<Character>> by lazy {
-        MutableLiveData<List<Character>>()
-    }
+    val repoLiveData =  MutableLiveData<List<Character>> ()
+//            by lazy {
+//        MutableLiveData<List<Character>>()
+//    }
 
     /**
      * calling CharacterRepository response within coroutine scope

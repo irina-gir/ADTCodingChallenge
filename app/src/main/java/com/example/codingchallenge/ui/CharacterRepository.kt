@@ -8,7 +8,7 @@ import kotlinx.coroutines.withContext
 /**
  * Characters repository for getting the response from network call
  */
-class CharacterRepository(private var charEndPoint: CharacterEndPoint) {
+open class CharacterRepository(private var charEndPoint: CharacterEndPoint) {
 
     /**
      * suspendable function returns list of characters
