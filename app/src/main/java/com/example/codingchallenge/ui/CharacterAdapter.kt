@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.codingchallenge.R
 import com.example.codingchallenge.models.Character
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import kotlinx.android.synthetic.main.bottom_sheet.view.*
 import kotlinx.android.synthetic.main.row_character.view.*
 
 /**
@@ -31,6 +32,15 @@ class CharacterAdapter(private val mContext: Context)
             Glide.with(mContext)
                 .load(character.image)
                 .into(itemView.image_character)
+
+            itemView.setOnClickListener {
+                var sheetDialog = BottomSheetDialog(mContext, R.style.Theme_Design_BottomSheetDialog)
+                var bottomSheetView =
+                    LayoutInflater.from(mContext).inflate(R.layout.bottom_sheet, null)
+                bottomSheetView.tv_character_location.text = character.location.name
+                sheetDialog.setContentView(bottomSheetView)
+                sheetDialog.show()
+            }
         }
     }
 
