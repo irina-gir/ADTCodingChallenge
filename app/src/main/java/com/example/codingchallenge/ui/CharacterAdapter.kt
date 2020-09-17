@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.codingchallenge.R
 import com.example.codingchallenge.models.Character
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.row_character.view.*
 
 /**
@@ -18,6 +19,9 @@ class CharacterAdapter(private val mContext: Context)
 
     private var myList = ArrayList<Character>()
 
+    /**
+     * Holds view, and binds data to the view
+     */
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         fun bind(character:Character){
             itemView.tv_character_name.text = character.name
@@ -30,17 +34,36 @@ class CharacterAdapter(private val mContext: Context)
         }
     }
 
+    /**
+     * returns ViewHolder with data and inflater
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(mContext).inflate(R.layout.row_character, parent, false)
         return ViewHolder(view)
     }
 
+    /**
+     * returns list size
+     */
     override fun getItemCount(): Int {
         return myList.size
     }
 
+    /**
+     * binds character into holder
+     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var character = myList[position]
         holder.bind(character)
+    }
+
+    /**
+     * pass data to the recycler view list
+     */
+    fun setData(newList: ArrayList<Character>){
+        myList.clear()
+        myList = newList
+        notifyDataSetChanged()
+
     }
 }
